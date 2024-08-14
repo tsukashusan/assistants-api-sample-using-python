@@ -1,0 +1,6 @@
+openai
+python-dotenv
+ipykernel
+Image
+numpy
+matplotlib
