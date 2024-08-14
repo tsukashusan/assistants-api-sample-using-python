@@ -23,6 +23,4 @@
 1. __ロジック アプリ名__ を[`logic-apps-{命名規則}`]で作成
 1. __地域__ は`Japan East` を選択
 1. 【確認および作成】を押下
-
-
 ![alt text](./images/create-resource-3.png)
