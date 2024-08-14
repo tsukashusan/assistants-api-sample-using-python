@@ -90,9 +90,9 @@ pip install -r requirements.txt
 #### Azure Portal から「キー1の値」と「エンドポイントのURL」貼り付ける。また、作成したモデル名(gpt-4-o)を貼りつける
 ![キー1](images/key-endpoint.png)
 ```python:.env
-AZURE_OPENAI_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-AZURE_OPENAI_ENDPOINT=https://xxxx-xxxx-xxxx.openai.azure.com/
-AZURE_OPENAI_MODEL_NAME=gpt-4o
+AZURE_OPENAI_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 「キー1の値」
+AZURE_OPENAI_ENDPOINT=https://xxxx-xxxx-xxxx.openai.azure.com/「エンドポイントURL」
+AZURE_OPENAI_MODEL_NAME=gpt-4o 「モデル名」
 ```
 
 ### ハンズオンの開始
