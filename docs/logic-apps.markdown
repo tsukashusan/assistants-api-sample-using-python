@@ -5,16 +5,18 @@ Here is a simple flow chart:
 
 ```mermaid
 sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop HealthCheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
+    participant Notebook
+    participant Azure OpenAI
+    participant Logic Apps
+
+    Notebook->>+Azure OpenAI: +今日の東京都港区港南の天気を教えてください?
+    %%loop HealthCheck
+    %%    Azure OpenAI->>Azure OpenAI: Fight against hypochondria
+    %%end
+    Note right of Azure OpenAI: Rational thoughts <br/>prevail!
+    Azure OpenAI-->>Notebook: Great!
+    Azure OpenAI->>Logic Apps: How about you?
+    Logic Apps-->>Azure OpenAI: Jolly good!
 ```
 
 
