@@ -43,7 +43,9 @@ sequenceDiagram
 
 
 ## ロジック アプリのデプロイ
+REST API を公開するためのAzure のサービスである ロジック アプリが使えるように Azure のサブスクリプション上に展開します
 
+### Azure へログイン
 [Azure Portal へログイン](http://portal.azure.com)
 
 
@@ -76,11 +78,13 @@ sequenceDiagram
 
 ![作成完了](./images/create-resource-complete.png)
 
-## ロジック アプリ
-### Logic Apps 管理画面
+## ロジック アプリでREST API を作成
+概要で説明した、ロジック アプリのHTTP の Request を受ける機能と MSN Weather のコネクタを使い、天気予報を返却するREST API を作成します
+
+### ロジック アプリ管理画面
 Logic Appsのが表示されるので、【開発ツール】を押下し、【ロジック アプリ デザイナー】を押下。
 
-![Logic Apps ポータル画面](./images/logicapps-portal.png)
+![ロジック アプリポータル画面](./images/logicapps-portal.png)
 
 ### ロジック アプリ デザイナー の表示
 ロジック アプリ デザイナーが表示されるので、【トリガーの追加】を押下
