@@ -1,22 +1,31 @@
 # Logic Apps で天気予報 API を作る
 
 ## 概要
-Here is a simple flow chart:
+
 
 ```mermaid
 sequenceDiagram
-    participant Notebook
+    autonumber
+    actor me
+    participant VSCode (Notebook)
     participant Azure OpenAI
     participant Logic Apps
-
-    Notebook->>+Azure OpenAI: +今日の東京都港区港南の天気を教えてください?
-    %%loop HealthCheck
-    %%    Azure OpenAI->>Azure OpenAI: Fight against hypochondria
-    %%end
-    Note right of Azure OpenAI: Rational thoughts <br/>prevail!
-    Azure OpenAI-->>Notebook: Great!
-    Azure OpenAI->>Logic Apps: How about you?
-    Logic Apps-->>Azure OpenAI: Jolly good!
+    participant MSN Weather
+    
+    me ->> +VSCode (Notebook):  今日の東京都港区港南の天気を教えてください?
+    VSCode (Notebook)->> +Azure OpenAI: 今日の東京都港区港南の天気を教えてください?
+    loop HealthCheck
+        VSCode (Notebook)->>VSCode (Notebook): Azure OpenAI 完了確認
+    end
+    Note left of Azure OpenAI: requires_action 
+    Azure OpenAI->> -VSCode (Notebook): 東京都港区港南
+    VSCode (Notebook)->>+Logic Apps: 東京都港区港南
+    Logic Apps->>+MSN Weather: 東京都港区港南
+    MSN Weather->>-Logic Apps: {  "responses": {    "daily": {      "day": {        "cap": "Mostly sunny",   ...
+    Logic Apps->>-VSCode (Notebook): {  "responses": {    "daily": {      "day": {        "cap": "Mostly sunny",   ... 
+    VSCode (Notebook)->>+Azure OpenAI: {  "responses": {    "daily": {      "day": {        "cap": "Mostly sunny",   ...
+    Azure OpenAI->>-VSCode (Notebook): 今日の東京都港区港南の展開は晴れです。 
+    VSCode (Notebook)->>-me: 今日の東京都港区港南の展開は晴れです。
 ```
 
 
