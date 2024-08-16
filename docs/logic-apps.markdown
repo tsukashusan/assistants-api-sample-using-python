@@ -168,10 +168,6 @@ Logic Appsのが表示されるので、【開発ツール】を押下し、【�
 
 ![URL貼り付け結果](./images/logicapps-result-paste.png)
 
-1. API のテスト
-
-![APIテスト](./images/logicapps-test-api.png)
-
 1. API のテスト結果
 赤枠のとおりの「HTTP/1.1 200 OK」と表示されると成功
 
