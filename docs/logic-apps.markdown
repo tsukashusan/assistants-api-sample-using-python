@@ -1,4 +1,4 @@
-# Azure OpenAI + Logic Apps で天気予報を取得する
+# Azure OpenAI + Logic Apps で天気予報を取得する(準備編)
 
 ## 概要
 Azure OpenAI Service の AIである LLM(large language model) は世界中のさまざまなデータから学習した結果をモデルと定義し、そのモデルを使って、未知なる回答を生成するものです。しかしながら、学習データはある時点までのデータで提供されており、最新の Azure OpenAI Service のモデルであっても、2023 年 11 月までのデータしか学習していません。
@@ -173,3 +173,16 @@ Logic Appsのが表示されるので、【開発ツール】を押下し、【�
 
 ![APIのテスト結果](./images/logicapps-result-api.png)
 
+### 開発環境へURLを設定
+#### 「.env」ファイルにURLを張り付ける
+赤枠の「GET_WEATHER_URL=」の右辺にURLを張り付ける
+![.env](./images/vscode-paste-url.png)
+
+#### 貼り付け結果
+この図のように、URLが貼り付ける
+
+![URLの貼り付け結果](./images/vscode-result-of-paste.png)
+
+これで準備は完了です。以下、URLに進む
+
+[Azure OpenAI + Logic Apps で天気予報を取得する (実行編)](../assistants-api-with-getweather.ipynb)
