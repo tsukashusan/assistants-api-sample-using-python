@@ -113,3 +113,51 @@ Logic Appsのが表示されるので、【開発ツール】を押下し、【�
     }
 }
 ```
+
+![HTTPの設定](./images/logicapps-http-received.png)
+
+#### MSN Weatherの追加
+1. ⊕を選択し、「アクションの追加」を選択
+![MSN Weaterの選択](./images/logicapps-add-action.png)
+
+1. 検索窓に「MSN」と入力し、「今日の予報を取得する」を押下
+![MSN Wheather](./images/logicapps-todays-wheather.png)
+
+1. 「Create new」を押下
+![MSN Wheather Create new](./images/logicapps-create-wheather.png)
+
+1. ⚡マークを押下
+![選択肢を表示](./images/logicapps-select-location1.png)
+
+1. Location を選択
+![select Location](./images/logicapps-select-location2.png)
+
+1. メートル法を選択
+![select meter](./images/logicapps-select-meter.png)
+
+#### Responseの選択
+1. ⊕を選択し、「アクションの追加」を選択
+![Responseを選択](./images/logicapps-add-action1.png)
+
+1. 検索窓に「response」と入力し、「Response」を押下
+![Responseを配置](./images/logicapps-respose.png)
+
+1. ⚡マークを押下
+
+![選択肢を表示](./images/logicapps-select-body.png)
+
+1. 「本文」を選択
+
+![本文を選択](./images/logicapps-select-body-of-letter.png)
+
+1. 「保存」を押下
+
+![保存](./images/logicapps-store.png)
+
+### アプリのテスト
+#### テストの準備
+1. URLの取得
+
+![alt text](./images/logicapps-get-url.png)
+
+1. 

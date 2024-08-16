@@ -1,0 +1,9 @@
+@url = <URL>
+
+###
+POST {{url}}
+Content-Type: application/json
+
+{
+    "location": "東京都八王子"
+}
