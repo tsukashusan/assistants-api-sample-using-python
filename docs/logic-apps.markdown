@@ -160,4 +160,20 @@ Logic Appsのが表示されるので、【開発ツール】を押下し、【�
 
 ![alt text](./images/logicapps-get-url.png)
 
-1. 
+1. ` logicapps.http `ファイルの <URL> に上書きする
+
+![URLの貼り付け](./images/logicapps-paste-url.png)
+
+1. 貼り付け結果
+
+![URL貼り付け結果](./images/logicapps-result-paste.png)
+
+1. API のテスト
+
+![APIテスト](./images/logicapps-test-api.png)
+
+1. API のテスト結果
+赤枠のとおりの「HTTP/1.1 200 OK」と表示されると成功
+
+![APIのテスト結果](./images/logicapps-result-api.png)
+
