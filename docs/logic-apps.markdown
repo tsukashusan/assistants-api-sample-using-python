@@ -1,18 +1,18 @@
-# Azure OpenAI + Logic Apps で天気予報を取得する(準備編)
+# Azure OpenAI + Logic Apps で天気を取得する(準備編)
 
 ## 概要
 Azure OpenAI Service の AIである LLM(large language model) は世界中のさまざまなデータから学習した結果をモデルと定義し、そのモデルを使って、未知なる回答を生成するものです。しかしながら、学習データはある時点までのデータで提供されており、最新の Azure OpenAI Service のモデルであっても、2023 年 11 月までのデータしか学習していません。
 したがって、最新のデータや特別なデータを LLM に要約を求める場合は、その電文の中にデータを埋め込み問い合わせする必要があります。
 その手法を RAG(Retrieval Augmented Generation) と言われています。
 
-本ハンズオンではそのデータ取得元をMSNの天気情報を使って当日の天気をLLMから回答を得ることを実施します。
+本ハンズオンではそのデータ取得元をMSNの天気情報を使って指定した当日の天気をLLMから回答を得ることを実施します。
 
 ## RAG のシーケンス
 このシーケンス図にある登場人物は以下の通りです。
 * VSCode (Notebook)<p>今利用している開発・実行環境</P>
 * Azure OpenAI Service<p>OpenAI 社のLLMをAzureのサービスを通してREST API で提供</p>
 * Logic Apps<p>Azureで動く一サービスででローコードでプログラムを開発できるツール。今回はMSN Weatherから取得した結果をREST API で応答する</p>
-* MSN Weather<p>MSNの天気サービス。Logic Apps のコネクタを使って接続するサービス。天気予報を回答する</p>
+* MSN Weather<p>MSNの天気サービス。Logic Apps のコネクタを使って接続するサービス。天気を回答する</p>
 
 ```mermaid
 sequenceDiagram
@@ -38,12 +38,46 @@ sequenceDiagram
         Azure OpenAI Service->>-VSCode (Notebook): 今日の東京都港区港南の展開は晴れです。 
         VSCode (Notebook)->>-VSCode (Notebook): Azure OpenAI Service 確認完了
     end
+    VSCode (Notebook)->>+Azure OpenAI Service: 対象スレッドから応答メッセージの取得要求
+    Azure OpenAI Service->>-VSCode (Notebook)　: 対象スレッドから応答メッセージの応答
     VSCode (Notebook)->>-me: 今日の東京都港区港南の展開は晴れです。
 ```
 
 
 ## ロジック アプリのデプロイ
 REST API を公開するためのAzure のサービスである ロジック アプリが使えるように Azure のサブスクリプション上に展開します
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor me
+    participant VSCode (Notebook)
+    participant Azure OpenAI Service
+    box Skyblue ターゲット
+    participant Logic Apps
+    end
+    participant MSN Weather
+    
+    me ->> +VSCode (Notebook):  今日の東京都港区港南の天気を教えてください?
+    VSCode (Notebook)->> +Azure OpenAI Service: 今日の東京都港区港南の天気を教えてください?
+    loop HealthCheck
+        VSCode (Notebook)->>+VSCode (Notebook): Azure OpenAI Service 確認中
+    
+        Note left of Azure OpenAI Service: requires_action 
+        Azure OpenAI Service->> -VSCode (Notebook): 東京都港区港南
+        VSCode (Notebook)->>+Logic Apps: 東京都港区港南
+        Logic Apps->>+MSN Weather: 東京都港区港南
+        MSN Weather->>-Logic Apps: {"responses": {"daily": {"day":      {"cap":"Mostlysunny",...{        "cap": "Mostly sunny",   ...
+        Logic Apps->>-VSCode (Notebook): {"responses": {"daily": {"day":      {"cap":"Mostlysunny",...{        "cap": "Mostly sunny",   ... 
+        VSCode (Notebook)->>+Azure OpenAI Service: {"responses": {"daily": {"day":      {"cap":"Mostlysunny",...{        "cap": "Mostly sunny",   ...
+        Azure OpenAI Service->>-VSCode (Notebook): 今日の東京都港区港南の展開は晴れです。 
+        VSCode (Notebook)->>-VSCode (Notebook): Azure OpenAI Service 確認完了
+    end
+    VSCode (Notebook)->>+Azure OpenAI Service: 対象スレッドから応答メッセージの取得要求
+    Azure OpenAI Service->>-VSCode (Notebook)　: 対象スレッドから応答メッセージの応答
+    VSCode (Notebook)->>-me: 今日の東京都港区港南の展開は晴れです。
+```
+
 
 ### Azure へログイン
 [Azure Portal へログイン](http://portal.azure.com)
@@ -79,7 +113,7 @@ REST API を公開するためのAzure のサービスである ロジック ア
 ![作成完了](./images/create-resource-complete.png)
 
 ## ロジック アプリでREST API を作成
-概要で説明した、ロジック アプリのHTTP の Request を受ける機能と MSN Weather のコネクタを使い、天気予報を返却するREST API を作成します
+概要で説明した、ロジック アプリのHTTP の Request を受ける機能と MSN Weather のコネクタを使い、天気を返却するREST API を作成します
 
 ### ロジック アプリ管理画面
 Logic Appsのが表示されるので、【開発ツール】を押下し、【ロジック アプリ デザイナー】を押下。
@@ -117,6 +151,36 @@ Logic Appsのが表示されるので、【開発ツール】を押下し、【�
 ![HTTPの設定](./images/logicapps-http-received.png)
 
 #### MSN Weatherの追加
+```mermaid
+sequenceDiagram
+    autonumber
+    actor me
+    participant VSCode (Notebook)
+    participant Azure OpenAI Service
+    participant Logic Apps
+    box Skyblue ターゲット
+    participant MSN Weather
+    end
+
+    me ->> +VSCode (Notebook):  今日の東京都港区港南の天気を教えてください?
+    VSCode (Notebook)->> +Azure OpenAI Service: 今日の東京都港区港南の天気を教えてください?
+    loop HealthCheck
+        VSCode (Notebook)->>+VSCode (Notebook): Azure OpenAI Service 確認中
+    
+        Note left of Azure OpenAI Service: requires_action 
+        Azure OpenAI Service->> -VSCode (Notebook): 東京都港区港南
+        VSCode (Notebook)->>+Logic Apps: 東京都港区港南
+        Logic Apps->>+MSN Weather: 東京都港区港南
+        MSN Weather->>-Logic Apps: {"responses": {"daily": {"day":      {"cap":"Mostlysunny",...{        "cap": "Mostly sunny",   ...
+        Logic Apps->>-VSCode (Notebook): {"responses": {"daily": {"day":      {"cap":"Mostlysunny",...{        "cap": "Mostly sunny",   ... 
+        VSCode (Notebook)->>+Azure OpenAI Service: {"responses": {"daily": {"day":      {"cap":"Mostlysunny",...{        "cap": "Mostly sunny",   ...
+        Azure OpenAI Service->>-VSCode (Notebook): 今日の東京都港区港南の展開は晴れです。 
+        VSCode (Notebook)->>-VSCode (Notebook): Azure OpenAI Service 確認完了
+    end
+    VSCode (Notebook)->>+Azure OpenAI Service: 対象スレッドから応答メッセージの取得要求
+    Azure OpenAI Service->>-VSCode (Notebook)　: 対象スレッドから応答メッセージの応答
+    VSCode (Notebook)->>-me: 今日の東京都港区港南の展開は晴れです。
+```
 1. ⊕を選択し、「アクションの追加」を選択
 ![MSN Weaterの選択](./images/logicapps-add-action.png)
 
@@ -185,4 +249,4 @@ Logic Appsのが表示されるので、【開発ツール】を押下し、【�
 
 これで準備は完了です。以下、URLに進む
 
-[Azure OpenAI + Logic Apps で天気予報を取得する (実行編)](../assistants-api-with-getweather.ipynb)
+[Azure OpenAI + Logic Apps で天気を取得する (実行編)](../assistants-api-with-getweather.ipynb)

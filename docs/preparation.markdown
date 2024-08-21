@@ -40,9 +40,11 @@ pip install -r requirements.txt
 #### CTRL+SHIFT+X または 拡張機能をクリック
 
 #### Python 拡張のインストール
+【インストール】を押下
 ![Python拡張のインストール](./images/extension-python.png)
 
 #### Jupyter 拡張のインストール
+【インストール】を押下
 ![Jupyter拡張のインストール](./images/extension-jupyter.png)
 
 #### インストール中
@@ -53,6 +55,13 @@ pip install -r requirements.txt
 【インストール】が消えていればインストール完了。
 ![インストール完了](images/extension-python-complete.png)
 
+#### REST Client 拡張のインストール
+【インストール】を押下
+![REST Client 拡張のインストール](./images/extension-REST-API.png)
+
+#### インストール完了
+【インストール】が消えていればインストール完了
+![インストール完了](./images/extension-REST-API-completed.png)
 
 ### Azure OpenAI Studioを使って、gpt-4oのモデルをデプロイ
 #### Azure OpenAI Studioへアクセス
@@ -88,11 +97,15 @@ pip install -r requirements.txt
 
 ### ` .env ` を編集
 #### Azure Portal から「キー1の値」と「エンドポイントのURL」貼り付ける。また、作成したモデル名(gpt-4-o)を貼りつける
+
+※GET_WEATHER_URLは別の工程で値を追記
+
 ![キー1](images/key-endpoint.png)
 ```python:.env
 AZURE_OPENAI_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 「キー1の値」
 AZURE_OPENAI_ENDPOINT=https://xxxx-xxxx-xxxx.openai.azure.com/「エンドポイントURL」
 AZURE_OPENAI_MODEL_NAME=gpt-4o 「モデル名」
+GET_WEATHER_URL=
 ```
 
 ### ハンズオンの開始
