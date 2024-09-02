@@ -4,17 +4,31 @@
 - python 3.12 のインストールと` python.exe `が存在しているフォルダパスが環境変数PATHに設定されていること。
 - pip が使える環境であること 
 
-### コマンドプロンプトを開く
-#### Windows の場合
+### Visual Studio Code を起動する
+#### 起動
+
+1. Windows キー -> `visual`とタイプ
+1. `Visual Studio Code`のアイコンを押下
+
+![Visual Studio Code を起動する](./images/launch-vscode.png)
+
+
+### Github Cloneする
+
+1. Visual Studio で `Ctrl + Shift + g` をタイプし、ソース管理を表示
+1. `リポジトリの複製` または
+![alt text](./images/git-clone-open.png)
+
+<!--
+%%%### コマンドプロンプトを開く
+%%%#### Windows の場合
 
 1. Windowsキー + r を押下
 1. cmdと入力し、【OK】を押下</br>
 ![cmdと入力](./images/command-prompt.png)
+@@@
+-->
 
-#### Mac の場合
-
-- DockでLaunchpadのアイコン をクリックして、検索フィールドに「ターミナル」と入力してから、「ターミナル」をクリックします。
-- Finder で、「/アプリケーション/ユーティリティ」フォルダを開いてから、「ターミナル」をダブルクリックします。
 ### virtualenv が未インストールの方
 個別の環境構築のため、Pythonの仮想環境を作成します。
 ```
@@ -27,7 +41,7 @@ python -m virtualenv -p  python3.12 extension-lectures
 
 ### アクティベート
 ```
-.\extension-lectures\Scripts\activate.bat
+.\extension-lectures\Scripts\activate.ps1
 ```
 
 ### パッケージのインストール
@@ -62,6 +76,16 @@ pip install -r requirements.txt
 #### インストール完了
 【インストール】が消えていればインストール完了
 ![インストール完了](./images/extension-REST-API-completed.png)
+
+
+#### Markdown preview mermaid 拡張のインストール
+【インストール】を押下
+![Markdown preview mermaid 拡張のインストール](./images/extension-mermaid.png)
+
+#### インストール完了
+【インストール】が消えていればインストール完了
+![Markdown preview mermaid 拡張のインストール完了](./images/extension-mermaid-completed.png)
+
 
 ### Azure OpenAI Studioを使って、gpt-4oのモデルをデプロイ
 #### Azure OpenAI Studioへアクセス
