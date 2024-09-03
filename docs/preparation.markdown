@@ -14,7 +14,7 @@
 ![Visual Studio Code を起動する](./images/launch-vscode.png)
 
 
-## Github Cloneする
+## GitHub Cloneする
 
 1. [Git リポジトリをブラウザで開く](https://github.com/tsukashusan/assistants-api-sample-using-python)
 
