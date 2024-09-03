@@ -247,6 +247,9 @@ sequenceDiagram
 
 ![URLの貼り付け結果](./images/vscode-result-of-paste.png)
 
+#### カーネルの再起動
+
+
 これで準備は完了です。以下、URLに進む
 
 [Azure OpenAI + Logic Apps で天気を取得する (実行編)](../assistants-api-with-getweather.ipynb)

@@ -62,7 +62,6 @@ python -m virtualenv -p  python3.12 extension-lectures
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force
 ```
 
-
 ### アクティベート
 ```pwsh
 .\extension-lectures\Scripts\activate.ps1
