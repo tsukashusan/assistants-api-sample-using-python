@@ -47,7 +47,7 @@
 1. git clone の完了
 ![alt text](./images/git-get-repository-complete-clone.png)
 
-### shell の立ち上げ
+## terminal の立ち上げ
 1. `ctrl + shift + p`を入力
 
 1. コマンド入力フィールドに`terminal: create new terminal`と入力
