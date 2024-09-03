@@ -250,3 +250,5 @@ sequenceDiagram
 これで準備は完了です。以下、URLに進む
 
 [Azure OpenAI + Logic Apps で天気を取得する (実行編)](../assistants-api-with-getweather.ipynb)
+
+[README に戻る](../README.markdown)

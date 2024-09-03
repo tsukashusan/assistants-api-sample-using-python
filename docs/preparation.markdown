@@ -3,6 +3,7 @@
 ### 前提条件
 - python 3.12 のインストールと` python.exe `が存在しているフォルダパスが環境変数PATHに設定されていること。
 - pip が使える環境であること 
+- [git for windows](https://gitforwindows.org/) がインストール済みであること
 
 ### Visual Studio Code を起動する
 #### 起動
@@ -15,38 +16,61 @@
 
 ### Github Cloneする
 
+1. [Git リポジトリをブラウザで開く](https://github.com/tsukashusan/assistants-api-sample-using-python)
+
+1. リポジトリのURLを取得する。クリップボードにコピー
+![alt text](./images/git-get-repository-url.png)
+
 1. Visual Studio で `Ctrl + Shift + g` をタイプし、ソース管理を表示
-1. `リポジトリの複製` または
+
+1. `リポジトリの複製` または `Git リポジトリのクローン` をクリック
 ![alt text](./images/git-clone-open.png)
 
-<!--
-%%%### コマンドプロンプトを開く
-%%%#### Windows の場合
+1. クリップボードにコピーされているURLを入力して「Enter」
+![alt text](./images/git-get-repository-url-enter.png)
 
-1. Windowsキー + r を押下
-1. cmdと入力し、【OK】を押下</br>
-![cmdと入力](./images/command-prompt.png)
-@@@
--->
+1. フォルダ選択ダイアログが表示されるので、任意の`空のフォルダ`を選択する</br>※__空ではないフォルダを選択した場合、正常に動作しません__
+![alt text](./images/git-get-repository-choice-folder.png)
+
+1. クローンが始まると、図のように、右下にプログレスバーが表示される
+![alt text](./images/git-get-repository-clone-in-progress.png)
+
+1. 完了するとダイアログが表示され、`開く` または　`新しいウィンドウで開く` を押下
+![alt text](./images/git-get-repository-open-folder.png)
+
+1. 「このフォルダー内のファイルの作者を信頼しますか?」とダイアログが表示されるので、`フォルダーを信頼して続行`を押下
+![alt text](./images/git-get-repository-trust-folder.png)
+
+1. さらに以下のようなメッセージダイアログが表示された場合も、`はい、作成者を信頼します`を押下</br>※「__親フォルダー...内のすべてのファイルの作成者を信頼しますのチェックは任意__」
+![alt text](./images/git-get-repository-trust-author.png)
+
+1. git clone の完了
+![alt text](./images/git-get-repository-complete-clone.png)
 
 ### virtualenv が未インストールの方
 個別の環境構築のため、Pythonの仮想環境を作成します。
-```
+```pwsh
 pip install virtualenv
 ```
 ### virtualenvを使って仮想環境を作成
-```
+```pwsh
 python -m virtualenv -p  python3.12 extension-lectures
 ```
 
-### アクティベート
+### Set-ExecutionPolicy によるPowerShellの実行ポリシーの変更
+```pwsh
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force
 ```
+
+
+### アクティベート
+```pwsh
 .\extension-lectures\Scripts\activate.ps1
 ```
 
 ### パッケージのインストール
 Pythonを実行するにあたり、
-```
+```pwsh
 pip install -r requirements.txt
 ```
 
@@ -135,6 +159,5 @@ GET_WEATHER_URL=
 ### ハンズオンの開始
 準備が完了したので、
 [assistants-api.ipynb](../assistants-api.ipynb)へ移動
-
 
 [README に戻る](../README.markdown)
