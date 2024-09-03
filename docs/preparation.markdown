@@ -164,7 +164,8 @@ pip install -r requirements.txt
 ## ` .env ` を編集
 ### Azure Portal から「キー1の値」と「エンドポイントのURL」貼り付ける。また、作成したモデル名(__gpt-4o__)を貼りつける
 
-※GET_WEATHER_URLは別の工程で値を追記
+※GET_WEATHER_URLは別の工程で値を追記</br>
+※※各文字列を二重引用符(ダブルクォーテーション)で囲むことは不要
 
 ![キー1](images/key-endpoint.png)
 ```python:.env
