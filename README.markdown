@@ -12,4 +12,3 @@
 
 ## ハンズオンの実行
 [notebook](./assistants-api.ipynb)を開き、notebookに記載されている内容に従い、ハンズオンを実行します
-
